@@ -1,7 +1,7 @@
 from Parser import Parser
 from db_connection import DB_my_connection
 
-brand_list = ['vihr-1007', 'zubr-665', 'interskol-19', 'fubag-103', 'champion-602', ]
+brand_list = ['vihr-1007', 'zubr-665', 'interskol-19', 'fubag-103', 'champion-602', 'dde-13498', 'huter-1008/', 'patriot-426', 'makita-1']
 
 
 def parser_VI(brand_list: list = []):

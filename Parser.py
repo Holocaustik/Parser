@@ -11,7 +11,7 @@ class Parser:
         driver = Driver_Chrom().loadChrome(headless=True)
         url = f'https://spb.vseinstrumenti.ru/brand/{self.brand}/page{page}/?asc=desc&orderby=price' if page > 1 else f'https://spb.vseinstrumenti.ru/brand/{self.brand}/?asc=desc&orderby=price'
         driver.get(url)
-        time.sleep(3)
+        time.sleep(1.5)
         names = driver.find_elements(By.XPATH, '//div[@data-qa="products-tile"]/a[@data-qa="product-name"]')
         prices = driver.find_elements(By.XPATH, '//div[@data-qa="products-tile"]//p[@data-qa="product-price-current"]')
         all_names = list(map(lambda x: x.get_attribute('title'), names))

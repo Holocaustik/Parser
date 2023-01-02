@@ -16,10 +16,9 @@ class DB_my_connection():
                     product_price INTEGER
                 )""")
 
-    def insert_in_db_params(self, dict):
+    def insert_in_db_params(self, dict: list = []):
         with sq.connect('db/VIdb.db') as con:
             cursor = con.cursor()
-            date = datetime.date.today().strftime('%d.%m.%Y')
-            text_for_insert_value_in_table = f'INSERT INTO mainDB VALUES (NULL, "{date}", ?, ?)'
+            text_for_insert_value_in_table = f'INSERT INTO mainDB VALUES (NULL, "{datetime.date.today().strftime("d.%m.%Y")}", ?, ?)'
             cursor.executemany(text_for_insert_value_in_table, dict)
             con.commit()
