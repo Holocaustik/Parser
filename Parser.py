@@ -6,11 +6,11 @@ from browser import Driver_Chrom
 class Parser:
     def __init__(self, brand: list = None):
         self.brand = brand
-        xpath_for_names = '//div[@data-qa="products-tile"]/a[@data-qa="product-name"]'
-        xpath_for_prices = '//div[@data-qa="products-tile"]//p[@data-qa="product-price-current"]'
-        xpath_for_last_page = '//a[@class="number"]'
-        url_for_find_all_links = 'https://spb.vseinstrumenti.ru/category/stroitelnyj-instrument-6474/'
-        xpath_for_find_all_links = "//a[@href = 'https://spb.vseinstrumenti.ru/category/akkumulyatornyj-instrument-2392/']//ancestor::div[1]"
+        self.xpath_for_names = '//div[@data-qa="products-tile"]/a[@data-qa="product-name"]'
+        self.xpath_for_prices = '//div[@data-qa="products-tile"]//p[@data-qa="product-price-current"]'
+        self.xpath_for_last_page = '//a[@class="number"]'
+        self.url_for_find_all_links = 'https://spb.vseinstrumenti.ru/category/stroitelnyj-instrument-6474/'
+        self.xpath_for_find_all_links = "//a[@href = 'https://spb.vseinstrumenti.ru/category/akkumulyatornyj-instrument-2392/']//ancestor::div[1]"
 
     def parser_page(self, page: int = 1, link: str = '') -> list:
         url = link if page == 1 else f'{link}/page{page}'
