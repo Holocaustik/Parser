@@ -8,8 +8,11 @@ def parser_VI():
         parser = Parser()
         last_page = parser.get_last_page(link=link)
         for page in range(1, last_page):
-            result_one_page = parser.parser_page(page=page, link=link)
-            DB_my_connection().insert_in_db_params(result_one_page)
+            try:
+                result_one_page = parser.parser_page(page=page, link=link)
+                DB_my_connection().insert_in_db_params(result_one_page)
+            except:
+                pass
 
 
 if __name__ == "__main__":
