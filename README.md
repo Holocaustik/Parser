@@ -9,5 +9,5 @@
 
 
 ## Что нужно установить
-##pip install selenium
-##pip install undetected_chromedriver
+####pip install selenium
+####pip install undetected_chromedriver

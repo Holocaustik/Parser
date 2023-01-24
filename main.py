@@ -1,5 +1,6 @@
 from Parser import Parser
 from db_connection import DB_my_connection
+from selenium.common.exceptions import WebDriverException
 
 
 def parser_VI():
@@ -9,9 +10,9 @@ def parser_VI():
         last_page = parser.get_last_page(link=link)
         for page in range(1, last_page):
             try:
-                result_one_page = parser.parser_page(page=page, link=link)
-                DB_my_connection().insert_in_db_params(result_one_page)
-            except:
+                data = parser.parser_page(page=page, link=link)
+                DB_my_connection().insert_in_db_params(data)
+            except WebDriverException:
                 pass
 
 
