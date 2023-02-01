@@ -40,6 +40,6 @@ class DB_my_connection():
         num.to_excel(f'{name}.xlsx', header=1)
 
 if __name__ == "__main__":
-    DB_my_connection().create_db()
-    # num = DB_my_connection().get_in_db_params()
-    # DB_my_connection().save_to_excel(num)
+    # DB_my_connection().create_db()
+    num = DB_my_connection().get_in_db_params()
+    DB_my_connection().save_to_excel(num)

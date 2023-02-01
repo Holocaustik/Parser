@@ -46,12 +46,14 @@ class Parser:
     def parser_page(self, last_page: int = 1, link: str = '') -> list:
         print(f"{link.replace('https://spb.vseinstrumenti.ru/category/', '')} всего {last_page} страниц")
         data_result = []
-        driver = Driver_Chrom().loadChrome(headless=True)
-        driver.get(link)
+
         check_finish = True
         counter = 0
-        for i in range(last_page):
+        for i in range(1, last_page):
             if check_finish:
+                driver = Driver_Chrom().loadChrome(headless=True)
+                driver.get(f'{link}/page{i}/')
+                print(i)
                 time.sleep(1.6)
                 all_cards_on_the_page = driver.find_elements(By.XPATH, self.xpath_for_cards)
                 for card in all_cards_on_the_page:
@@ -64,14 +66,16 @@ class Parser:
                         price = card.find_element(By.XPATH, self.xpath_for_price).text.replace(' р.', '').replace(' ', '')
                         data_result.append((code, name, price))
                 counter += 1
-                try:
-                    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.button_next))).click()
-                except:
-                    print('не нашли кнопку')
-                    check_finish = False
+
+                # try:
+                #     driver.find_element(By.XPATH, self.button_next).click()
+                # except:
+                #     print('не нашли кнопку')
+                #     check_finish = False
             else:
                 break
+            driver.close()
+            driver.quit()
         print(f'спарсили всего {counter} из {last_page}')
-        driver.close()
-        driver.quit()
+
         return data_result
