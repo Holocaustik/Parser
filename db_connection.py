@@ -15,13 +15,14 @@ class DB_my_connection():
                     date DATE,
                     code text,
                     product_name TEXT,
-                    product_price INTEGER
+                    product_price INTEGER,
+                    product_link TEXT
                 )""")
 
     def insert_in_db_params(self, dict: list = []):
         with sq.connect('db/VIdb.db') as con:
             cursor = con.cursor()
-            text_for_insert_value_in_table = f'INSERT INTO mainDB VALUES (NULL, "{datetime.date.today().strftime("%d.%m.%Y")}", ?, ?, ?)'
+            text_for_insert_value_in_table = f'INSERT INTO mainDB VALUES (NULL, "{datetime.date.today().strftime("%d.%m.%Y")}", ?, ?, ?, ?)'
             cursor.executemany(text_for_insert_value_in_table, dict)
             con.commit()
 
