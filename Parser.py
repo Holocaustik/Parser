@@ -71,13 +71,6 @@ class Parser:
                         price = card.find_element(By.XPATH, self.xpath_for_price).text.replace(' р.', '').replace(' ', '')
                         data_result.append((code, name, price, product_link))
                 counter += 1
-
-
-                # try:
-                #     driver.find_element(By.XPATH, self.button_next).click()
-                # except:
-                #     print('не нашли кнопку')
-                #     check_finish = False
             else:
                 break
             driver.close()
